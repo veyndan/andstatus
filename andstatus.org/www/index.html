@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	  <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>AndStatus - an Open Source multiple accounts client for multiple social networks for Android</title>
     <style>
-	@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,700);
 	@import "styles/styles.css";
 
     </style>
 </head>
 <body>
 <header>
-		<h1><img src="images/andstatus-logo.png" style="width: 64px; margin: 0" alt="">&nbsp;AndStatus</h1>
+		<h1><img src="images/andstatus-logo.png" width="64" alt="">&nbsp;AndStatus</h1>
 		<p>Open Source multiple accounts client for multiple social networks for Android</p>
 </header>
 <main>
-		<div id="slidy-container">
-				<figure id="slidy">
-						<img id="photo1" src="images/scr-timeline-light.png" alt="Light theme on Smartphone">
-						<img id="photo2" src="images/scr-conversation-tree-avatars.png"
-										 alt="Conversation view on Smartphone">
-						<img id="photo3" src="images/scr-timeline-tablet.png" alt="AndStatus on Tablet">
-						<img id="photo4" src="images/scr-message-editor.png" alt="Note Editor">
-				</figure>
-		</div>
+		<ul>
+				<li><img src="images/scr-timeline-light.png" alt="Light theme on Smartphone"></li>
+				<li><img src="images/scr-conversation-tree-avatars.png" alt="Conversation view on Smartphone"></li>
+				<li><img src="images/scr-message-editor.png" alt="Note Editor"></li>
+				<li><img src="images/scr-timeline-tablet.png" alt="AndStatus on Tablet"></li>
+		</ul>
 		<section>
 				<h2>About</h2>
 				<p>
@@ -71,9 +68,9 @@
 				<h2>Download</h2>
 				<p style="text-align:center;">
 						<a href="https://play.google.com/store/apps/details?id=org.andstatus.app" target="_blank"><img
-										src="images/get-it-on-google-play.png" width="250" alt="Get it on Google Play"></a>
+										src="images/get-it-on-google-play.svg" width="250" alt="Get it on Google Play"></a>
 						<a href="https://f-droid.org/repository/browse/?fdid=org.andstatus.app" target="_blank"><img
-										src="images/get-it-on-fdroid.png" width="250" alt="Get it on F-Droid"></a>
+										src="https://fdroid.gitlab.io/artwork/badge/get-it-on.svg" width="250" alt="Get it on F-Droid"></a>
 						<br/>or
 						<a href="https://github.com/andstatus/andstatus/" target="_blank">Get the source</a> and <a
 								href="https://github.com/andstatus/andstatus/blob/master/doc/DeveloperFAQ.md#instructions-for-andstatus-project-developers"
@@ -119,62 +116,8 @@
 		</section>
 </main>
 <footer>
-		<p style="text-align:center;font-size:small;">&copy; AndStatus Project 2011-2023<br/>Android, Google
+		<p>&copy; AndStatus Project 2011-2023<br/>Android, Google
 				Play and the Google Play logo are trademarks of Google Inc.<br/><br/></p>
 </footer>
 </body>
-<script type="text/javascript" language="JavaScript">
-    var timeOnSlide = 3;
-    var timeBetweenSlides = 1;
-    var animationstring = 'animation';
-    var animation = false;
-    var keyframeprefix = '';
-    var domPrefixes = 'Webkit Moz O Khtml'.split(' ');
-    var pfx = '';
-    var slidy = document.getElementById("slidy");
-    if (slidy.style.animationName !== undefined) {
-        animation = true;
-    }
-    if (animation === false) {
-        for (var i = 0; i < domPrefixes.length; i++) {
-            if (slidy.style[domPrefixes[i] + 'AnimationName'] !== undefined) {
-                pfx = domPrefixes[i];
-                animationstring = pfx + 'Animation';
-                keyframeprefix = '-' + pfx.toLowerCase() + '-';
-                animation = true;
-                break;
-            }
-        }
-    }
-    if (animation === false) {
-        // animate using a JavaScript fallback, if you wish
-    } else {
-        var images = slidy.getElementsByTagName("img"),
-                firstImg = images[0],
-                imgWrap = firstImg.cloneNode(false);
-        slidy.appendChild(imgWrap);
-        var imgCount = images.length,
-                totalTime = (timeOnSlide + timeBetweenSlides) * (imgCount - 1),
-                slideRatio = (timeOnSlide / totalTime) * 100,
-                moveRatio = (timeBetweenSlides / totalTime) * 100,
-                basePercentage = 100 / imgCount,
-                position = 0,
-                css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML += "#slidy { text-align: left; margin: 0; font-size: 0; position: relative; width: " + (imgCount * 100) + "%;  }";
-        css.innerHTML += "#slidy img { float: left; width: " + basePercentage + "%; }";
-        css.innerHTML += "@" + keyframeprefix + "keyframes slidy {";
-        for (i = 0; i < (imgCount - 1); i++) {
-            position += slideRatio;
-            css.innerHTML += position + "% { left: -" + (i * 100) + "%; }";
-            position += moveRatio;
-            css.innerHTML += position + "% { left: -" + ((i + 1) * 100) + "%; }";
-        }
-        css.innerHTML += "}";
-        css.innerHTML += "#slidy { left: 0%; " + keyframeprefix + "transform: translate3d(0,0,0); "
-                + keyframeprefix + "animation: " + totalTime + "s slidy infinite; }";
-        document.body.appendChild(css);
-    }
-
-</script>
 </html>
